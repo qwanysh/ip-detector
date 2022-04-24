@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    environment:
+      HOST: 0.0.0.0
+      PORT: 9090
+      REDIS_URL: redis://redis:6379
+      RELOAD: 'true'
+    command: python -m src.main
+    ports:
+      - '9090:9090'
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6-alpine

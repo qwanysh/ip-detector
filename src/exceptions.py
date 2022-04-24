@@ -1,0 +1,2 @@
+class SlugExpiredError(Exception):
+    pass
